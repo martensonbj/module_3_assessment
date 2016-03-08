@@ -55,7 +55,6 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       post :create, format: :json, id: item.id
 
       json_response = JSON.parse(response.body, symbolize_names: true)
-      binding.pry
 
       expect(response).to have_http_status(201)
       expect(json_response[:item][:name]).to eq("Lambourghini Diablo")

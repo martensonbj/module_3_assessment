@@ -9,13 +9,13 @@ class BestBuyService
   end
 
   def products(name)
-    data = parse(connection.get("products?format=json&apiKey=#{api_key}"))
-    binding.pry
+    data = parse(connection.get("products?format=json&show=sku,name,salePrice&apiKey=#{api_key}"))
   end
 
-  def single_product_data
-    products(name)[:products].each do |product|
-      data = parse(connection.get"products/#{product[:sku]}?format=json&apiKey=#{api_key}")
+  def single_product_data(name)
+    data = products(name)[:products].map do |product|
+      sku = product[:sku]
+      parse(connection.get"products/#{sku}.json?apiKey=#{api_key}")
     end
   end
 
