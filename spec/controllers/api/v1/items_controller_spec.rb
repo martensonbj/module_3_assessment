@@ -50,11 +50,12 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
 
   describe "POST create" do
     it "creates an item" do
-      item = Item.new(name: "Lambourghini Diablo", description: "Maybe if I ace this assessment I'll have on one day", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
-      item.save
+      item = Item.create(name: "Lambourghini Diablo", description: "Maybe if I ace this assessment I'll have on one day", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
+      item = Item.last
       post :create, format: :json, id: item.id
 
       json_response = JSON.parse(response.body, symbolize_names: true)
+      binding.pry
 
       expect(response).to have_http_status(201)
       expect(json_response[:item][:name]).to eq("Lambourghini Diablo")
