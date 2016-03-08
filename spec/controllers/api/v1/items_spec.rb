@@ -4,8 +4,10 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
   describe "GET index" do
     it "finds all items" do
       get :index, format: :json
-
+      item = Item.all
+      json_response = JSON.parse(response.body, symbolize_names: true)
       binding.pry
+
       expect(response).to have_http_status(200)
       expect(json_response.count).to eq 500
       expect(json_response).to include(:name)
