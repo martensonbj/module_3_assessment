@@ -19,6 +19,7 @@ gem 'pg'
 gem 'faraday'
 gem 'responders'
 gem 'active_model_serializers'
+gem 'rails_12factor'
 
 group :development do
   gem "spring"

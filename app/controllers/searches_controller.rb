@@ -4,6 +4,7 @@ class SearchesController < ApplicationController
   def index
     bbs = BestBuyService.new
     @products = bbs.products(params[:search_params])
+    redirect_to search_path
   end
 
 end
