@@ -1,0 +1,27 @@
+item_1:
+  name: "Practical Silk Table"
+  description: "Reprehenderit iste repudiandae et voluptas dolor non. Ipsa repudiandae in possimus asperiores dolores. Expedita rerum voluptas dolorum. Necessitatibus sit eius voluptas voluptas. Voluptatem voluptate vero."
+  image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200"
+  created_at: "2016-03-08T07:27:24.705Z"
+  updated_at: "2016-03-08T07:27:24.705Z"
+
+item_2:
+  name: "Lightweight Leather Keyboard"
+  description: "Omnis excepturi sed delectus sunt ipsam. Ut voluptas voluptatum quasi nulla ipsa. Quia nihil doloribus alias deserunt et totam qui. Nihil cupiditate ea ab cum dignissimos quis inventore. Culpa similique in recusandae."
+  image_url: "http://robohash.org/1.png?set=set2&bgset=bg1&size=200x200"
+  created_at: "2016-03-08T07:27:24.708Z"
+  updated_at: "2016-03-08T07:27:24.708Z"
+
+item_3:
+  name: "Ergonomic Wooden Chair"
+  description: "Aut in ea qui. Ut enim libero rerum facilis pariatur. In temporibus enim maxime expedita nulla voluptatibus. Quaerat magni nam et harum voluptatum labore. Accusamus consequuntur sed."
+  image_url: "http://robohash.org/2.png?set=set2&bgset=bg1&size=200x200"
+  created_at: "2016-03-08T07:27:24.710Z"
+  updated_at: "2016-03-08T07:27:24.710Z"
+
+item_4:
+  name: "Rustic Copper Knife"
+  description: "Earum in error deserunt pariatur. Hic eveniet velit. Excepturi nihil labore molestiae veniam neque et. Qui vero necessitatibus atque consequatur odit. Sunt autem iure et deserunt provident."
+  image_url: "http://robohash.org/3.png?set=set2&bgset=bg1&size=200x200"
+  created_at: "2016-03-08T07:27:24.712Z"
+  updated_at: "2016-03-08T07:27:24.712Z"

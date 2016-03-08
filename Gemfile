@@ -18,6 +18,7 @@ gem 'figaro'
 gem 'pg'
 gem 'faraday'
 gem 'responders'
+gem 'active_model_serializers'
 
 group :development do
   gem "spring"

@@ -1,20 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ItemsController, type: :controller do
+  fixtures :items
   describe "GET index" do
     it "finds all items" do
       get :index, format: :json
-      item = Item.all
       json_response = JSON.parse(response.body, symbolize_names: true)
-      binding.pry
 
       expect(response).to have_http_status(200)
-      expect(json_response.count).to eq 500
-      expect(json_response).to include(:name)
-      expect(json_response).to include(:description)
-      expect(json_response).to include(:image_url)
-      expect(json_response).to not_include(:created_at)
-      expect(json_response).to not_include(:updated_at)
+      expect(json_response[:items].count).to eq 4
+      expect(json_response[:items].first).to include(:name)
+      expect(json_response[:items].first).to include(:description)
+      expect(json_response[:items].first).to include(:image_url)
+      expect(json_response[:items].first).to_not include(:created_at)
+      expect(json_response[:items].first).to_not include(:updated_at)
     end
   end
 
