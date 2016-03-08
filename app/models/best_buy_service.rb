@@ -4,7 +4,6 @@ class BestBuyService
 
   def initialize
     @connection = Faraday.new("http://api.bestbuy.com/v1")
-    binding.pry
     # @connection.headers = {"apiKey" => ENV["API_KEY"]}
     @api_key = ENV['API_KEY']
   end
@@ -12,6 +11,12 @@ class BestBuyService
   def products(name)
     data = parse(connection.get("products?format=json&apiKey=#{api_key}"))
     binding.pry
+  end
+
+  def single_product_data
+    products(name)[:products].each do |product|
+      data = parse(connection.get"products/#{product[:sku]}?format=json&apiKey=#{api_key}")
+    end
   end
 
   private

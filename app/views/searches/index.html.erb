@@ -1,0 +1,22 @@
+<h1>SEARCH RESULTS</h1>
+  <table class="table table-bordered">
+    <thead>
+      <th>IMAGE</th>
+      <th>SKU</th>
+      <th>NAME</th>
+      <th>AVERAGE REVIEW</th>
+      <th>DESCRIPTION</th>
+      <th>SALE PRICE</th>
+    </thead>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= %></td>
+      <td><%= product[:sku] %></td>
+      <td><%= product[:name] %></td>
+      <td><%= product[:salePrice] %></td>
+      <td><%= %></td>
+      <td><%= %></td>
+
+    </tr>
+    <% end %>
+  </table>
