@@ -35,4 +35,18 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     end
   end
 
+  describe "POST destroy" do
+    it "deletes an item" do
+      item = Item.first
+      
+      get :show, format: :json, id: item.id
+      json_response = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(200)
+
+      delete :destroy, format: :json, id: item.id
+      expect(response).to have_http_status(204)
+
+    end
+  end
+
 end
