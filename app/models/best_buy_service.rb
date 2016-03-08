@@ -8,7 +8,9 @@ class BestBuyService
   end
 
   def products(name)
-    parse(connection.get("products?format=json&apiKey=#{api_key}"))
+    binding.pry
+    data = parse(connection.get("products?format=json&apiKey=#{api_key}"))
+    binding.pry
   end
 
   private

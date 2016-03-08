@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
 
   def index
     bbs = BestBuyService.new
-    bbs.products(name)
+    @products = bbs.products(params[:search_params])
   end
 
 end
