@@ -10,4 +10,7 @@ Rails.application.routes.draw do
       resources :items, defaults: {format: :json}
     end
   end
+
+  get '/search', to: "searches#index"
+  
 end
