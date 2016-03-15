@@ -50,16 +50,17 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
 
   describe "POST create" do
     it "creates an item" do
-      item = Item.create(name: "Lambourghini Diablo", description: "Maybe if I ace this assessment I'll have on one day", image_url: "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
-      item = Item.last
-      post :create, format: :json, id: item.id
+      name = "Puppy"
+      description = "A big one"
+      image_url = "http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200"
+      post :create, format: :json, name: name, description: description, image_url: image_url
 
       json_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to have_http_status(201)
-      expect(json_response[:item][:name]).to eq("Lambourghini Diablo")
-      expect(json_response[:item][:description]).to eq("Maybe if I ace this assessment I'll have on one day")
-      expect(json_response[:item]).to eq("http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
+      expect(json_response[:item][:name]).to eq("Puppy")
+      expect(json_response[:item][:description]).to eq("A big one")
+      expect(json_response[:item][:image_url]).to eq("http://robohash.org/0.png?set=set2&bgset=bg1&size=200x200")
       expect(json_response[:item]).to_not include(:created_at)
       expect(json_response[:item]).to_not include(:updated_at)
     end

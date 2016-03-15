@@ -1,0 +1,57 @@
+$(document).ready(function(){
+    // $('#addItemButton').click(addProductToList;
+
+  $("#searchItemButton").on('click', function(searchInput){
+    var searchInput = $('#searchInput').val();
+    console.log(searchInput)
+    $.ajax({
+      type: "GET",
+      url: "https://api.bestbuy.com/v1/products(longDescription=" + searchInput + "*)",
+      data: {
+        apiKey: "<%= ENV['API_KEY'] %>",
+        format: "json",
+        pageSize: "15",
+        show: "sku,name,customerReviewAverage,shortDescription,salePrice,image"
+      },
+      success: function(response) {
+        console.log(response)
+        $('.search-results').empty()
+        $.each(response.products, function(index, product) {
+          renderProductOnPage(product)
+        });
+      }, error: function(xhr) {
+        console.log("Broken in Onclick Function", xhr);
+      }
+    });
+  });
+});
+
+// function addProductToList(){
+//   $.ajax({
+//     type: "POST",
+//     url: '/search',
+//     success: function(response) {
+//       renderProductOnPage(response);
+//     }, error: function(xhr) {
+//       console.log("SOMETHING BROKE", xhr);
+//     }
+//   });
+// }
+
+function renderProductOnPage(product) {
+  console.log(product);
+  $(".search-results").append(
+    "<tr> <td>"
+    + "[IMAGE]"
+    + "</td> <td>"
+    + product.sku
+    + "</td> <td>"
+    + product.name
+    + "</td> <td>"
+    + product.customerReviewAverage
+    + "</td> <td>"
+    + product.shortDescription
+    + "</td> <td>"
+    + product.salePrice
+    + "</td></tr>" )
+};

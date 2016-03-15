@@ -1,5 +1,21 @@
 <h1>SEARCH RESULTS</h1>
-  <table class="table table-bordered">
+
+<!-- <%= form_tag method: 'post', class: 'add-item-form' do %>
+  <%= text_field_tag :image_url, "Image URL" %>
+  <%= text_field_tag :sku, "SKU" %>
+  <%= text_field_tag :name, "Item Name"  %> <br>
+  <%= text_field_tag :customerReviewAverage, "Average Review"  %>
+  <%= text_area_tag :shortDescription, "Short Description"  %>
+  <%= text_field_tag :salePrice, "Price"  %>
+  <%= submit_tag 'Add Item', id: 'addItemButton'%>
+<% end %> -->
+
+  <%= text_field_tag "search", 'Enter search term...', id: 'searchInput' %>
+  <%= submit_tag 'Search', id: 'searchItemButton' %>
+
+
+<% if @products.count > 0 %>
+  <table class="table table-bordered search-table">
     <thead>
       <th>IMAGE</th>
       <th>SKU</th>
@@ -8,15 +24,19 @@
       <th>DESCRIPTION</th>
       <th>SALE PRICE</th>
     </thead>
-    <% @products.each do |product| %>
-    <tr>
-      <td><%= %></td>
-      <td><%= product[:sku] %></td>
-      <td><%= product[:name] %></td>
-      <td><%= product[:salePrice] %></td>
-      <td><%= %></td>
-      <td><%= %></td>
-
-    </tr>
-    <% end %>
+    <tbody class="search-results">
+        <% @products.each do |product| %>
+      <tr>
+        <td><%= image_tag product[:image], class: "search-img" %></td>
+        <td><%= product[:sku] %></td>
+        <td><%= product[:name] %></td>
+        <td><%= product[:customerReviewAverage] %></td>
+        <td><%= product[:shortDescription] %></td>
+        <td><%= product[:salePrice] %></td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
+<% else  %>
+  <h5>There are no products currently available with that search critera. <%= link_to "Go Back", root_path %></h5>
+<% end %>

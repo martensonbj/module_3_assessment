@@ -28,5 +28,3 @@ class Api::V1::ItemsController < ApplicationController
   end
 
 end
-
-# respond_with :api, :v1, Skill.create(skill_params)
