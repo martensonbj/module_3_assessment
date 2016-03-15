@@ -1,42 +1,64 @@
 $(document).ready(function(){
-    // $('#addItemButton').click(addProductToList;
-
-  $("#searchItemButton").on('click', function(searchInput){
-    var searchInput = $('#searchInput').val();
-    console.log(searchInput)
-    $.ajax({
-      type: "GET",
-      url: "https://api.bestbuy.com/v1/products(longDescription=" + searchInput + "*)",
-      data: {
-        apiKey: "<%= ENV['API_KEY'] %>",
-        format: "json",
-        pageSize: "15",
-        show: "sku,name,customerReviewAverage,shortDescription,salePrice,image"
-      },
-      success: function(response) {
-        console.log(response)
-        $('.search-results').empty()
-        $.each(response.products, function(index, product) {
-          renderProductOnPage(product)
-        });
-      }, error: function(xhr) {
-        console.log("Broken in Onclick Function", xhr);
-      }
-    });
-  });
+    addProductToList();
+    searchForProducts();
 });
 
-// function addProductToList(){
-//   $.ajax({
-//     type: "POST",
-//     url: '/search',
-//     success: function(response) {
-//       renderProductOnPage(response);
-//     }, error: function(xhr) {
-//       console.log("SOMETHING BROKE", xhr);
-//     }
-//   });
-// }
+  function searchForProducts() {
+    $("#searchItemButton").on('click', function(searchInput){
+      var searchInput = $('#searchInput').val();
+
+      $.ajax({
+        type: "GET",
+        url: "https://api.bestbuy.com/v1/products(longDescription=" + searchInput + "*)",
+        data: {
+          apiKey: "<%= ENV['API_KEY'] %>",
+          format: "json",
+          pageSize: "15",
+          show: "sku,name,customerReviewAverage,shortDescription,salePrice,image"
+        },
+        success: function(response) {
+          console.log(response)
+          $('.search-results').empty()
+          $.each(response.products, function(index, product) {
+            renderProductOnPage(product)
+          });
+        }, error: function(xhr) {
+          console.log("Broken in Onclick Function", xhr);
+        }
+      });
+
+    });
+  }
+
+function addProductToList(){
+  $('#addProductToList').on('click', function(){
+
+    var productParams = {
+        product: {
+          name: $('#productName').val(),
+          sku: $('#productSKU').val(),
+          image: $('#productImage').val(),
+          review: $('#productReview').val(),
+          description: $('#productDescription').val(),
+          price: $('#productPrice').val()
+        }
+    }
+
+    console.log(productParams)
+
+    $.ajax({
+      type: "POST",
+      url: "api/v1/products/new",
+      data: productParams,
+      success: function(newProduct) {
+        console.log("newProduct: " + newProduct)
+      }, error: function(xhr) {
+        console.log("ERROR: " + xhr)
+      }
+    }) //ajax
+    
+  }); //onClick
+}
 
 function renderProductOnPage(product) {
   console.log(product);

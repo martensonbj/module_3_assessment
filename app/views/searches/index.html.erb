@@ -9,9 +9,22 @@
   <%= text_field_tag :salePrice, "Price"  %>
   <%= submit_tag 'Add Item', id: 'addItemButton'%>
 <% end %> -->
-
+<div class="search-item" style="float: left; width: 500px; padding: 20px; border: 1px solid #aaa">
   <%= text_field_tag "search", 'Enter search term...', id: 'searchInput' %>
   <%= submit_tag 'Search', id: 'searchItemButton' %>
+</div>
+
+<div class="add-item-form" style=" float: right; width: 500px; padding: 20px; border: 1px solid #aaa">
+  <h4>Add A Product</h4>
+  <%= label_tag 'Name' %> <%= text_field_tag 'Name', '', id: 'productName' %> <br>
+  <%= label_tag 'SKU' %> <%= text_field_tag 'SKU', '', id: 'productSKU' %> <br>
+  <%= label_tag 'Image' %> <%= text_field_tag 'Image', '', id: 'productImage' %> <br>
+  <%= label_tag 'Review' %> <%= text_field_tag 'Review', '', id: 'productReview' %> <br>
+  <%= label_tag 'Description' %> <%= text_field_tag 'Description', '', id: 'productDescription' %> <br>
+  <%= label_tag 'Price' %> <%= text_field_tag 'Price', '', id: 'productPrice' %> <br>
+  <%= submit_tag 'Add Item', id: 'addProductToList' %>
+</div>
+
 
 
 <% if @products.count > 0 %>
